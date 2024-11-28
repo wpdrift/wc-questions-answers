@@ -13,7 +13,7 @@ function modify_comment_link( $link, $comment ) {
     }
     return $link;
 }
-//add_filter( 'get_comment_link', 'modify_comment_link', 10, 2 );
+add_filter( 'get_comment_link', 'modify_comment_link', 10, 2 );
 
 // Register custom rewrite rules for the comment answers page under the product
 function comment_answers_rewrite_rule() {
