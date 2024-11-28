@@ -45,22 +45,6 @@ function custom_css_on_frontend() {
 }
 add_action( 'wp_enqueue_scripts', 'custom_css_on_frontend' );
 
-// Hook to change comment type to 'discussion' after the comment is posted
-function set_discussion_comment_type( $comment_id, $comment_approved, $commentdata ) {
-    // Ensure this is a comment reply, not a new comment or a different post type
-    if ( isset( $commentdata['comment_type'] ) && empty( $commentdata['comment_type'] ) ) {
-        // Check if this is an answer to a discussion
-        if ( ! empty( $commentdata['comment_post_ID'] ) && $commentdata['comment_parent'] > 0 ) {
-            // Update comment type to 'discussion' for replies
-            wp_update_comment( array(
-                'comment_ID'    => $comment_id,
-                'comment_type'  => 'discussion', // Set the custom comment type
-            ) );
-        }
-    }
-}
-add_action( 'comment_post', 'set_discussion_comment_type', 10000, 3 );
-
 
 function handle_parent_comment_id( $commentdata ) {
 
