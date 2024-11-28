@@ -59,7 +59,7 @@ function set_discussion_comment_type( $comment_id, $comment_approved, $commentda
         }
     }
 }
-//add_action( 'comment_post', 'set_discussion_comment_type', 10000, 3 );
+add_action( 'comment_post', 'set_discussion_comment_type', 10000, 3 );
 
 
 function handle_parent_comment_id( $commentdata ) {
